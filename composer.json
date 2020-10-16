@@ -1,0 +1,21 @@
+{
+    "name": "harriescc\/kuaidi100",
+    "description": "基于快递1，查询智能推送，云打印，短信",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "harriescc",
+            "email": "harrieschen@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "phpunit/phpunit": "~5",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "HarriesCC\\Kuaidi100\\": "src"
+        }
+    }
+}
