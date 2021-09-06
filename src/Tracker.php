@@ -28,12 +28,13 @@ class Tracker extends Base
      * 实时查询接口
      * @param string $com
      * @param string $num
+     * @param string $phone
      * @return string
      * @throws HttpException
      * @throws InvalidArgumentException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function track(string $com,string $num)
+    public function track(string $com,string $num, string $phone = null)
     {
         $url = 'https://poll.kuaidi100.com/poll/query.do';
 
@@ -51,6 +52,9 @@ class Tracker extends Base
 
         $this->param['com'] = $com;
         $this->param['num'] = $num;
+        if (empty($phone)) {
+            $this->param['phone'] = $phone;
+        }
 
         $sign = strtoupper(md5(json_encode($this->param).$this->key.$this->options['customer']));
 
