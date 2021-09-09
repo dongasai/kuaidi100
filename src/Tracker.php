@@ -34,9 +34,13 @@ class Tracker extends Base
      * @throws InvalidArgumentException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function track(string $com,string $num, string $phone = null)
+    public function track(string $com,string $num, string $phone = null, $proxy = false)
     {
         $url = 'https://poll.kuaidi100.com/poll/query.do';
+
+        if ($proxy == true) {
+            $url = "http://kuaidi100.beautinow.net:47161/poll/query.do";
+        }
 
         if (empty($this->options['customer'])) {
             throw new InvalidArgumentException('customer不能为空');
