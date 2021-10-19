@@ -34,7 +34,7 @@ class Tracker extends Base
      * @throws InvalidArgumentException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function track(string $com,string $num, string $phone = null, $proxy = false)
+    public function track(string $com,string $num, string $phone = null, $proxy = true)
     {
         $url = 'https://poll.kuaidi100.com/poll/query.do';
 
