@@ -39,7 +39,7 @@ class Tracker extends Base
         $url = 'https://poll.kuaidi100.com/poll/query.do';
 
         if ($proxy == true) {
-            $url = "https://www.kuaidi100.com/poll/query.do";
+            $url = 'https://poll.kuaidi100.com/poll/query.do';
         }
 
         if (empty($this->options['customer'])) {
