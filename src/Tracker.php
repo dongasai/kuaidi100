@@ -69,6 +69,7 @@ class Tracker extends Base
         ];
 
         try {
+            $this->setGuzzleOptions(['timeout'=>5]);
             $response = $this->getHttpClient()->request('POST', $url, [
                 'form_params' => $query,
             ])->getBody()->getContents();
