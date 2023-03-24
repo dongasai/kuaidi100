@@ -56,7 +56,7 @@ class Tracker extends Base
 
         $this->param['com'] = $com;
         $this->param['num'] = $num;
-        if (empty($phone)) {
+        if (!empty($phone)) {
             $this->param['phone'] = $phone;
         }
 
