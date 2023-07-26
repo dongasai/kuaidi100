@@ -69,4 +69,33 @@ class Label extends Base
             throw new HttpException($e->getMessage(), $e->getCode(), $e);
         }
     }
+
+    public function printTask($taskId) {
+        $url = $this->endpoint.$this->path;
+
+        $t = time();
+
+        $param = [
+            'taskId' => $taskId
+        ];
+
+        $this->sign = $sign = strtoupper(md5(json_encode($param).$t.$this->key.$this->options['secret']));
+
+        $params = [
+            'method' => 'order',
+            'key' => $this->options['key'],
+            'sign' => $sign,
+            't' => $t,
+            'param' => json_encode($param)
+        ];
+
+        try {
+            $response = $this->getHttpClient()->request('POST', $url, [
+                'form_params' => $params,
+            ])->getBody()->getContents();
+            return $response;
+        } catch (\Exception $e) {
+            throw new HttpException($e->getMessage(), $e->getCode(), $e);
+        }
+    }
 }
