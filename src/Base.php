@@ -12,6 +12,10 @@ use HarriesCC\Kuaidi100\Exceptions\InvalidArgumentException;
  */
 class Base
 {
+    protected $endpoint = 'https://api.kuaidi100.com';
+
+    protected $pollEndpoint = 'https://poll.kuaidi100.com';
+
     /**
      * @var mixed
      */
