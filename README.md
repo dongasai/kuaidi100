@@ -1,6 +1,6 @@
 ## 安装
 
-> 项目fork自`harriescc/kuaidi100`,为前辈致以感谢,本Fork将不改变命名空间,会加入个性化的内容
+> 项目fork自 [harriescc/kuaidi100](https://github.com/HarriesCC/kuaidi100) ,为前辈致以感谢,本Fork将不改变命名空间,会加入个性化的内容
 
 ```sybase
 composer require dongasai/kuaidi100
@@ -13,7 +13,7 @@ composer require dongasai/kuaidi100
     - 云打印
 
 ### 开始准备
-[快递100接口文档](https://www.kuaidi100.com/openapi/cloud_api.shtml#d03)
+[快递100接口文档](https://api.kuaidi100.com/document/)
 
 
 ### 实时查询
