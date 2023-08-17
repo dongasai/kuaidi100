@@ -5,6 +5,7 @@ namespace HarriesCC\Kuaidi100;
 
 use HarriesCC\Kuaidi100\Exceptions\HttpException;
 use HarriesCC\Kuaidi100\Exceptions\InvalidArgumentException;
+use HarriesCC\Kuaidi100\Models\Poll\Query;
 
 /**
  * 订阅推送类
@@ -26,40 +27,15 @@ class Poll extends Base
      */
     public function getPoll(string $company, string $number, string $callbackUrl, $schema = 'json')
     {
-        $url = 'https://poll.kuaidi100.com/poll';
-
-        if (empty($company)) {
-            throw new InvalidArgumentException('公司编号不能为空');
-        }
-
-        if (empty($number)) {
-            throw new InvalidArgumentException('物流编号不能为空');
-        }
-
-        if (empty($callbackUrl)) {
-            throw new InvalidArgumentException('回调地址不能为空');
-        }
-
-        $params= [
-            'schema' => $schema,
-            'param' => json_encode([
-                'company' => $company,
-                'number' => $number,
-                'key' => $this->options['key'],
-                'parameters' => [
-                    'callbackurl' => $callbackUrl
-                ]
-            ])
+        $params = [
+            'company' => $company,
+            'number' => $number,
+            'key' => $this->options['key'],
+            'parameters' => [
+                'callbackurl' => $callbackUrl
+            ]
         ];
-
-        try {
-            $response = $this->getHttpClient()->request('POST', $url, [
-                'form_params' => $params,
-            ])->getBody()->getContents();
-            return $response;
-        } catch (\Exception $e) {
-            throw new HttpException($e->getMessage(), $e->getCode(), $e);
-        }
+        return $this->getPollByParam($params, $schema);
     }
 
     /**
@@ -73,20 +49,22 @@ class Poll extends Base
      */
     public function getPollByParam(array $param, $schema = 'json')
     {
-        $url = 'https://poll.kuaidi100.com/poll';
+        $url = Url::POLL;
+
         if (empty($param)) {
             throw new InvalidArgumentException('param参数不能为空');
         }
-        $params= [
+        $params = [
             'schema' => $schema,
             'param' => json_encode($param)
         ];
 
         try {
-            $response = $this->getHttpClient()->request('POST', $url, [
+            $json = $this->getHttpClient()->request('POST', $url, [
                 'form_params' => $params,
             ])->getBody()->getContents();
-            return $response;
+            $mapper = new \JsonMapper();
+            return $mapper->map(json_decode($json), \HarriesCC\Kuaidi100\Models\Poll\Poll::class);
         } catch (\Exception $e) {
             throw new HttpException($e->getMessage(), $e->getCode(), $e);
         }

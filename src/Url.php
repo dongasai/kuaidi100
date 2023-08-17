@@ -15,4 +15,9 @@ class Url
      */
     const QUERY = 'https://poll.kuaidi100.com/poll/query.do';
 
+    /**
+     * 订阅API
+     */
+    const POLL = 'https://poll.kuaidi100.com/poll';
+
 }

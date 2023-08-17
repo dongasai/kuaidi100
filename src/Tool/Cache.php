@@ -34,7 +34,7 @@ class Cache
     static public function getCacheOb()
     {
         if(empty(self::$cacheOb)){
-            self::$cacheOb =new FilesystemAdapter('',6000,dirname(dirname(__DIR__)).'/runtime/');
+            self::$cacheOb =new FilesystemAdapter('',36000,dirname(dirname(__DIR__)).'/runtime/');
         }
 
 
@@ -70,7 +70,7 @@ class Cache
         return $cache->hasItem($key2);
     }
 
-    static public function setCacheItem($key, $data, $ttl = 6000)
+    static public function setCacheItem($key, $data, $ttl = 3600000)
     {
         $key2 = md5(serialize($key));
 

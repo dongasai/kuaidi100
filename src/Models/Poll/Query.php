@@ -36,7 +36,7 @@ class Query
 
     /**
      * 数据内容
-     * @var Query\Data[]
+     * @var \HarriesCC\Kuaidi100\Models\Poll\Query\Data[]
      */
     public $data;
 
@@ -57,7 +57,7 @@ class Query
 
     /**
      * 地址信息
-     * @var Query\RouteInfo
+     * @var \HarriesCC\Kuaidi100\Models\Poll\Query\RouteInfo
      */
     public $routeInfo;
 

@@ -85,8 +85,6 @@ class Tracker extends Base
             $response = $this->postFormParams($url, $this->param, ['timeout' => 5]);
             $json = $response->getBody()->getContents();
 
-            var_dump($json);
-
             $mapper = new \JsonMapper();
             $Query = $mapper->map(json_decode($json), Query::class);
             return $Query;
