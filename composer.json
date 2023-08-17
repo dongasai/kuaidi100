@@ -1,5 +1,5 @@
 {
-    "name": "harriescc/kuaidi100",
+    "name": "dongasai/kuaidi100",
     "description": "基于快递100，查询智能推送，云打印，短信",
     "license": "MIT",
     "authors": [
@@ -10,12 +10,24 @@
     ],
     "require": {
         "guzzlehttp/guzzle": ">=6.3",
-        "phpunit/phpunit": ">=5",
-        "ext-json": "*"
+        "phpunit/phpunit": ">=6",
+        "ext-json": "*",
+        "php": ">=7.2"
     },
     "autoload": {
         "psr-4": {
             "HarriesCC\\Kuaidi100\\": "src"
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "HarriesCC\\Kuaidi100\\ComposerEvent::postInstall"
+        ],
+        "post-update-cmd": [
+            "HarriesCC\\Kuaidi100\\ComposerEvent::postUpdata"
+        ],
+        "csv2_const": [
+            "HarriesCC\\Kuaidi100\\Csv2Const::to"
+        ]
     }
 }

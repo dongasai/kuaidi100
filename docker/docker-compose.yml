@@ -1,0 +1,18 @@
+version: '2'
+services:
+  php72:
+    build: p72
+    image: kuaidi100:p72
+    privileged: false
+    restart: unless-stopped
+    volumes:
+      - ../:/var/www/html
+    tty: true
+  php74:
+    build: p74
+    image: kuaidi100:p74
+    privileged: false
+    restart: unless-stopped
+    volumes:
+      - ../:/var/www/html
+    tty: true

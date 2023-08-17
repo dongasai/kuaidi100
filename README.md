@@ -1,7 +1,9 @@
 ## 安装
 
+> 项目fork自`harriescc/kuaidi100`,为前辈致以感谢,本Fork将不改变命名空间,会加入个性化的内容
+
 ```sybase
-composer require harriescc/kuaidi100
+composer require dongasai/kuaidi100
 ```
 
 ### 实现功能
@@ -91,6 +93,31 @@ try {
 $kuaidi->getSign();
 ```
     
+
+## Env
+
+> 见`.env.bak`,复制到 `.env`
+
+> 单元测试用,实际使用用不到
+
+* KUAIDI100_KEY =
+* KUAIDI100_CUSTOMER =
+* KUAIDI100_SERCRET =
+* KUAIDI100_USER_ID =
+
+
+## Docker 
+
+
+```bash
+
+cd docker 
+
+docker-compose --project-name kuaidi100 up -d
+
+docker exec -it  kuaidi100-php72-1 bash
+
+```
 ## License
 
 MIT
