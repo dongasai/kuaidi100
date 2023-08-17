@@ -1,7 +1,12 @@
 <?php
 
-namespace HarriesCC\Kuaidi100\Models;
+namespace HarriesCC\Kuaidi100\Models\Label;
 
+
+/**
+ * 人员信息
+ *
+ */
 class Man {
     protected string $name;
 

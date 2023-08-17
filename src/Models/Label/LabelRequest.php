@@ -1,7 +1,11 @@
 <?php
 
-namespace HarriesCC\Kuaidi100\Models;
+namespace HarriesCC\Kuaidi100\Models\Label;
 
+/**
+ * 创建电子免单请求
+ *
+ */
 class LabelRequest {
 
     protected string $partnerId;

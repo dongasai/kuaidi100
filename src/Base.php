@@ -4,6 +4,8 @@ namespace HarriesCC\Kuaidi100;
 
 use GuzzleHttp\Client;
 use HarriesCC\Kuaidi100\Exceptions\InvalidArgumentException;
+use HarriesCC\Kuaidi100\Tool\Cache;
+use HarriesCC\Kuaidi100\Tool\GuzzleHttp;
 
 /**
  * 基础类
@@ -62,15 +64,37 @@ class Base
      */
     protected function getHttpClient()
     {
-        return new Client($this->guzzleOptions);
+        return GuzzleHttp::getClient();
     }
 
+
     /**
-     * @param array $options
+     * 进行 表单参数请求
+     * @param $url
+     * @param $param
+     * @param $option
+     * @return \Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    protected function setGuzzleOptions(array $options)
+    public function postFormParams($url, $param, $option = [])
     {
-        $this->guzzleOptions = $options;
+
+        $sign = strtoupper(md5(json_encode($param) . $this->key . $this->options['customer']));
+
+        $query = [
+            'customer' => $this->options['customer'],
+            'sign' => $sign,
+            'param' => json_encode($param)
+        ];
+
+        $httpClient = $this->getHttpClient();
+        $option = array_merge($option, [
+            'form_params' => $query,
+        ]);
+        $response = $httpClient->request('POST', $url, $option);
+
+        return $response;
     }
+
 
 }

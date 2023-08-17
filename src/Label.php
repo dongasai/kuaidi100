@@ -6,7 +6,7 @@ namespace HarriesCC\Kuaidi100;
 use GuzzleHttp\Exception\GuzzleException;
 use HarriesCC\Kuaidi100\Exceptions\HttpException;
 use HarriesCC\Kuaidi100\Exceptions\InvalidArgumentException;
-use HarriesCC\Kuaidi100\Models\LabelRequest;
+use HarriesCC\Kuaidi100\Models\Label\LabelRequest;
 
 /**
  * 电子面单

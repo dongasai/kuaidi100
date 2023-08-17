@@ -6,13 +6,17 @@
         {
             "name": "harriescc",
             "email": "harrieschen@gmail.com"
+        },
+        {
+            "name": "dongasai",
+            "email": "1514582970@qq.com"
         }
     ],
     "require": {
         "guzzlehttp/guzzle": ">=6.3",
-        "phpunit/phpunit": ">=6",
         "ext-json": "*",
-        "php": ">=7.2"
+        "php": ">=7.2",
+        "netresearch/jsonmapper": "^4.2"
     },
     "autoload": {
         "psr-4": {
@@ -20,14 +24,12 @@
         }
     },
     "scripts": {
-        "post-install-cmd": [
-            "HarriesCC\\Kuaidi100\\ComposerEvent::postInstall"
-        ],
-        "post-update-cmd": [
-            "HarriesCC\\Kuaidi100\\ComposerEvent::postUpdata"
-        ],
         "csv2_const": [
-            "HarriesCC\\Kuaidi100\\Csv2Const::to"
+            "HarriesCC\\Kuaidi100\\Tool\\Csv2Const::to"
         ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=6",
+        "symfony/cache": "^5.4"
     }
 }
