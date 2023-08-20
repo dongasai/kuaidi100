@@ -24,7 +24,7 @@ class Query
      * 是否签收
      * @var int
      */
-    public $ischecck = 0;
+    public $ischeck = 0;
 
     /**
      * 快递公司
