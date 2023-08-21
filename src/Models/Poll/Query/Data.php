@@ -27,14 +27,14 @@ class Data
     /**
      * 行政区域 代码
      * resultv2=4才会展示
-     * @var string
+     * @var string|null
      */
     public $areaCode;
 
     /**
      * 行政区域
      * resultv2=4才会展示
-     * @var string
+     * @var string|null
      */
     public $areaName;
 
@@ -42,7 +42,7 @@ class Data
      *
      * 当前状态名字
      * resultv2=4才会展示
-     * @var string
+     * @var string|null
      */
     public $status;
 
@@ -50,14 +50,14 @@ class Data
     /**
      * 本数据元对应的快件当前地点
      * resultv2=4才会展示
-     * @var string
+     * @var string|null
      */
     public $location;
 
     /**
      * 本数据元对应的行政区域经纬度
      * resultv2=4才会展示
-     * @var string
+     * @var string|null
      */
     public $areaCenter;
 
@@ -65,7 +65,7 @@ class Data
     /**
      * 本数据元对应的行政区域拼音
      * resultv2=4才会展示
-     * @var string
+     * @var string|null
      */
     public $areaPinYin;
 
@@ -73,9 +73,9 @@ class Data
     /**
      * 本数据元对应的高级物流状态值
      * resultv2=4才会展示
-     * @var string
+     * @var string|null
      */
     public $statusCode;
 
-    
+
 }
