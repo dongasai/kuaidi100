@@ -6,6 +6,7 @@ namespace HarriesCC\Kuaidi100;
 use HarriesCC\Kuaidi100\Exceptions\Exception;
 use HarriesCC\Kuaidi100\Exceptions\HttpException;
 use HarriesCC\Kuaidi100\Exceptions\InvalidArgumentException;
+use HarriesCC\Kuaidi100\Models\Autonumber;
 use HarriesCC\Kuaidi100\Models\Poll\Query;
 
 /**
@@ -110,15 +111,16 @@ class Tracker extends Base
     }
 
     /**
-     * 只能判断接口查询，查询结果不准，不建议使用
+     * 智能判断接口查询，查询结果不准，不建议使用
      * @param string $num
      * @return string
      * @throws HttpException
      * @throws InvalidArgumentException
      */
-    public function getAutoTrack(string $num)
+    public function getAutoTrack(string $num):Autonumber
     {
-        $url = 'http://www.kuaidi100.com/autonumber/auto';
+        $url = Url::AUTO;
+
 
         if (empty($num)) {
             throw new InvalidArgumentException('快递单号不能为空');
@@ -130,10 +132,19 @@ class Tracker extends Base
         ];
 
         try {
-            $response = $this->getHttpClient()->get($url, [
+            $json = $this->getHttpClient()->get($url, [
                 'query' => $query,
             ])->getBody()->getContents();
-            return $response;
+
+//            dump($json);
+            $mapper = new \JsonMapper();
+            $arr = json_decode($json);
+            if(is_array($arr)){
+                $auto = $mapper->map($arr[0], Autonumber::class);
+            }else{
+                $auto = $mapper->map($arr, Autonumber::class);
+            }
+            return $auto;
         } catch (Exception $e) {
             throw new HttpException($e->getMessage(), $e->getCode(), $e);
         }

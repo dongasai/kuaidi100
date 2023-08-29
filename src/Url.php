@@ -5,7 +5,11 @@ namespace HarriesCC\Kuaidi100;
 class Url
 {
 
-    const AUTO = '/autonumber/auto';    // 智能判断请求地址
+    /**
+     * 智能判断请求地址
+     */
+    const AUTO = 'https://www.kuaidi100.com/autonumber/auto';
+
     const PRINT_BILLPARCEL = '/print/billparcels.do?method=billparcels';    // 快递发货单打印接口请求地址
 
 
